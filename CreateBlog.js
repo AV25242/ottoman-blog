@@ -1,9 +1,4 @@
 const ottoman = require('ottoman')
-const {  model } = require('ottoman');
-//const { Blog }  = require('./model/blogModel');
-
-const blogSchema = require('./schema/blogSchema');
-
 
 
 
@@ -15,17 +10,18 @@ const connection = ottoman.connect({
   password: 'password'
 });
 
+const { BlogModel }   = require('./model/blogModel');
 
-
-const Blog = ottoman.model('blogs', blogSchema, {scopeName : 'region-us', collectionName: 'blogs'})
+//const Blog = ottoman.model('blogs', blogSchema, {scopeName : 'region-us', collectionName: 'blogs'})
 // Creating a use that matches the model
-const ottomanBlog = new Blog({
+const ottomanBlog = new BlogModel({
     blogKey : 'Blog1234',
     title: 'First Ottoman Blog',
     author: 'Arun Vijayraghavan',
     body: 'Ottoman is awesome !!!',
+    status : 'Something',
     meta: {
-      votes: 100,
+      votes: 4,
       favs:  10
     }
 })
