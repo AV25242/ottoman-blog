@@ -9,11 +9,12 @@ const blogSchema = require('./schema/blogSchema');
 
 // create connection to database/bucket
 const connection = ottoman.connect({
-  connectionString: 'couchbase://phonehome.hq.couchbase.com',
-  bucketName: 'sdk_stats',
-  username: 'arunv',
-  password: 'EiJoh0ai'
+  connectionString: 'couchbase://localhost',
+  bucketName: 'blogs',
+  username: 'Administrator',
+  password: 'password'
 });
+
 
 
 const Blog = ottoman.model('blogs', blogSchema, {scopeName : 'region-us', collectionName: 'blogs'})
@@ -31,7 +32,7 @@ const ottomanBlog = new Blog({
 // run the query
 const runAsync = async() => {
     try {
-      
+
         await ottomanBlog.save();
         console.log(`success: blog added successfully`)
       //  const airlane = await Airline.findByCallSign('United');
